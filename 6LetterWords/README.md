@@ -5,6 +5,8 @@ Solution can be run using the command dotnet run --project 6LetterWords
 
 Since the original challenge did not specify if segements of words could be reused, i have made the assumption that they can be reused.
 
+The output can be found in the directory where you executed the dotnet run command after running the project in a file called output.txt. 
+
 # Original challenge
 
 ## 6 letter words
