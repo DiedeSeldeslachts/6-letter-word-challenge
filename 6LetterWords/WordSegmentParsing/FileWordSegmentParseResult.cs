@@ -8,7 +8,7 @@ namespace _6LetterWords.WordSegmentParsing
         public FileWordSegmentParseResult(IReadOnlyDictionary<int, List<string>> categorizedWords, IReadOnlyDictionary<string, IReadOnlyDictionary<int, string>> splitUpSixLetterWords)
         {
             CategorizedWords = categorizedWords;
-            SplitUpSixLetterWords = splitUpSixLetterWords;
+            SegmentedMaxLengthWords = splitUpSixLetterWords;
         }
     }
 }

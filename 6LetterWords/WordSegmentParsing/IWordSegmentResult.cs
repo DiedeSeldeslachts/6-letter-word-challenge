@@ -10,7 +10,7 @@ namespace _6LetterWords.WordSegmentParsing
     {
         public IReadOnlyDictionary<int, List<string>> CategorizedWords { get; protected set;  }
 
-        public IReadOnlyDictionary<string, IReadOnlyDictionary<int, string>> SplitUpSixLetterWords { get; protected set; }
+        public IReadOnlyDictionary<string, IReadOnlyDictionary<int, string>> SegmentedMaxLengthWords { get; protected set; }
 
     }
 }

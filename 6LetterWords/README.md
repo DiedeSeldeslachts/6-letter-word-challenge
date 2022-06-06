@@ -1,4 +1,13 @@
-# 6 letter words
+
+#Solution
+
+Solution can be run using the command dotnet run --project 6LetterWords
+
+Since the original challenge did not specify if segements of words could be reused, i have made the assumption that they can be reused.
+
+#Original challenge
+
+## 6 letter words
 There's a file in the root of the repository, input.txt, that contains words of varying lengths (1 to 6 characters).
 
 Your objective is to show all combinations of those words that together form a word of 6 characters. That combination must also be present in input.txt
@@ -21,3 +30,4 @@ Treat this exercise as if you were writing production code; think unit tests, SO
 The solution must be stored in a git repo. After the repo is cloned, the application should be able to run with one command / script.
 
 Don't spend too much time on this.
+
