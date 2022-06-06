@@ -26,7 +26,7 @@ namespace _6LetterWords.WordSegmentProcessing
             //Start from the biggest words
             foreach (var splitUpSixLetterWord in input.SplitUpSixLetterWords)
             {
-                var segementsList = FindNextSegments(splitUpSixLetterWord.Key, "", input);
+                var segementsList = FindNextSegments(splitUpSixLetterWord.Key, 0, input);
                 foreach (var segements in segementsList)
                 {
                     result.Add(new WordMatch(segements, splitUpSixLetterWord.Key));
@@ -44,27 +44,29 @@ namespace _6LetterWords.WordSegmentProcessing
         /// <param name="currentList">The current segments </param>
         /// <param name="segments"></param>
         /// <returns></returns>
-        private List<List<string>> FindNextSegments([NotNull] string wordToSearch, [NotNull] string baseStr, IWordSegmentResult input, List<string> segments = null, List<List<string>> segmentsList = null)
+        private List<List<string>> FindNextSegments([NotNull] string wordToSearch, [NotNull] int currentSegmentsLength, IWordSegmentResult input, List<string> segments = null, List<List<string>> segmentsList = null)
         {
             if (segmentsList == null) segmentsList = new List<List<string>>();
             if (segments == null) segments = new List<string>();
 
-            for (int i = 1; i <= MaxWordSize-1 - baseStr.Length; i++)
+            for (int i = 1; i <= MaxWordSize - currentSegmentsLength; i++)
             {
                 //Don't check for words of the maximum lenght, then it is not a combination
-                //if (i > MaxWordSize-1) break;
-                var firstLetterMatches = input.CategorizedWords[i].FirstOrDefault(x => input.SplitUpSixLetterWords[wordToSearch][baseStr.Length].StartsWith(x));
+                if (i > MaxWordSize - 1) break;
+                var firstLetterMatches = input.CategorizedWords[i].FirstOrDefault(x => input.SplitUpSixLetterWords[wordToSearch][currentSegmentsLength][0] == x[0] //This is a performance optimalization, (10 times faster than just using startsWith)
+                                                                                       && input.SplitUpSixLetterWords[wordToSearch][currentSegmentsLength].StartsWith(x)); //This is 90% of all processing time, can possibly be improved 
                 if (firstLetterMatches != null)
                 {
                     var newList = new List<string>(segments);
                     newList.Add(firstLetterMatches);
 
-                    if(baseStr.Length + firstLetterMatches.Length == MaxWordSize)
+                    if (currentSegmentsLength + firstLetterMatches.Length == MaxWordSize)
                     {
                         segmentsList.Add(newList);
-                    } else
+                    }
+                    else
                     {
-                        segmentsList = FindNextSegments(wordToSearch, baseStr + firstLetterMatches, input, newList, segmentsList);
+                        segmentsList = FindNextSegments(wordToSearch, currentSegmentsLength + firstLetterMatches.Length, input, newList, segmentsList);
                     }
                 }
             }

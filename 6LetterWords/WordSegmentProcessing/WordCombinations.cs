@@ -2,16 +2,16 @@
 {
     public class WordCombinations
     {
-        public IEnumerable<WordMatch> wordMatches { get; }
+        public IEnumerable<WordMatch> WordMatches { get; }
 
         public WordCombinations(IEnumerable<WordMatch> sixLetterWordMatches)
         {
-            wordMatches = sixLetterWordMatches;
+            WordMatches = sixLetterWordMatches;
         }
 
         public override string ToString()
         {
-            return wordMatches.Select(x => x.ToString()).Aggregate((m1, m2) => $"{m1}\r\n{m2}");
+            return WordMatches.Select(x => x.ToString()).Aggregate((m1, m2) => $"{m1}\r\n{m2}");
         }
     }
 }
