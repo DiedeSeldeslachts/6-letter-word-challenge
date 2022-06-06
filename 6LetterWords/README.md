@@ -1,11 +1,11 @@
 
-#Solution
+# Solution
 
 Solution can be run using the command dotnet run --project 6LetterWords
 
 Since the original challenge did not specify if segements of words could be reused, i have made the assumption that they can be reused.
 
-#Original challenge
+# Original challenge
 
 ## 6 letter words
 There's a file in the root of the repository, input.txt, that contains words of varying lengths (1 to 6 characters).
