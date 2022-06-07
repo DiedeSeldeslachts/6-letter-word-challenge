@@ -15,16 +15,19 @@ public class Program
         var output = new WordSegmentProcessor(maxWordSize: 6, minSegmentSize: 1).FindWordCombinationsFromSegments(input);
         stopwatch.Stop();
         Console.WriteLine(output);
+        Console.WriteLine();
         Console.WriteLine($"Number of matches: {output.WordMatches.Count()}");
         Console.WriteLine($"Time taken: +- {stopwatch.ElapsedMilliseconds}ms");
 
-        using(FileStream filestream = new FileStream("output.txt", FileMode.Create))
+        using (FileStream filestream = new FileStream("output.txt", FileMode.Create))
         using (var streamwriter = new StreamWriter(filestream))
         {
             streamwriter.AutoFlush = true;
             streamwriter.Write(output);
         }
 
+        Console.WriteLine();
+        Console.WriteLine($"output.txt file created in current directory");
         Console.ReadLine();
 
     }
