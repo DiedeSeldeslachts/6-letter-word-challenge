@@ -45,10 +45,10 @@
 
             foreach (var size in Enumerable.Range(MinSegmentSize, MaxWordSize))
             {
-                categorizedWords.Add(size, new List<string>());
+                categorizedWords.Add(size, new List<string>()); //initialize dictionary elements
             }
 
-            foreach (var line in lines.Select(x => x.Trim()))
+            foreach (var line in lines.Select(x => x.Trim()).Distinct())
             {
                 if (line.Length < MinSegmentSize || line.Length > MaxWordSize)
                 {

@@ -7,8 +7,8 @@ namespace _6LetterWords.Tests
     public class WordSegmentParsingTests
     {
         [Theory]
-        [InlineData("input.txt", "s", "h", "zambia", "basalt", 6, 1, 764, 382)]
-        [InlineData("input2.txt", "s", "h", "zambia", "flight", 6, 1, 98, 65)]
+        [InlineData("input.txt", "s", "z", "zambia", "basalt", 6, 1, 26, 183)]
+        [InlineData("input2.txt", "s", "w", "zambia", "flight", 6, 1, 22, 65)]
         public void FileWordSegmentParser_ReturnsWordSegments_WhenGivenValidFilePath(string fileName, string minLetterFirst, string minLetterLast, string maxLetterFirst, string maxLetterLast, int maxWordSize, int minSegmentSize, int minLengthArraySize, int maxLengthArraySize)
         {
             var fileParser = new FileWordSegementParser(maxWordSize, minSegmentSize);
