@@ -11,8 +11,8 @@ public class Program
         string inputLocation = Path.Combine(executableLocation, "input.txt");
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
-        var input = new FileWordSegementParser(6, 1).Parse(inputLocation);
-        var output = new WordSegmentProcessor(6, 1).FindWordCombinationsFromSegments(input);
+        var input = new FileWordSegementParser(maxWordSize: 6, minSegmentSize: 1).Parse(inputLocation);
+        var output = new WordSegmentProcessor(maxWordSize: 6, minSegmentSize: 1).FindWordCombinationsFromSegments(input);
         stopwatch.Stop();
         Console.WriteLine(output);
         Console.WriteLine($"Number of matches: {output.WordMatches.Count()}");
